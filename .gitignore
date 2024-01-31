@@ -1,0 +1,49 @@
+# .gitignore
+
+# Virtual environment
+myenv/
+venv/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE files
+.idea/
+.vscode/
+
+# Django-related files
+*.sqlite3
+*.log
+__pycache__
+db.sqlite3
+media/
+static/
+
+# Environment variables
+.env
+
+# Compiled Python bytecode
+*.pyc
+__pycache__/
+
+# Local development settings
+local_settings.py
+
+# Ignore the secret key configuration file
+secret_key.txt
+
+# Ignore migration files
+**/migrations/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore coverage reports
+htmlcov/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
