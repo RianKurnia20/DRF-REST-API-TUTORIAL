@@ -1,5 +1,5 @@
 """
-URL configuration for cbvSerializers project.
+URL configuration for nestedSerializers project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,22 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from cbvApp import views
-from rest_framework.routers import DefaultRouter
-
-router = DefaultRouter()
-router.register('students',views.StudentViewSet)
-
+from django.urls import path
+from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('author/', AuthorListView.as_view()),
+    path('author/<int:pk>', AuthorDetailView.as_view()),
+    path('book/', BookListView.as_view()),
+    path('book/<int:pk>', BookDetailView.as_view()),
 ]
-
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('students/',views.StudentList.as_view()),
-#     path('students/<int:pk>',views.StudentDetail.as_view())
-# ]
