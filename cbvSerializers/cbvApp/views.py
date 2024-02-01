@@ -8,15 +8,24 @@ from django.http import Http404
 from datetime import datetime
 
 # import modules for using drf mixins
-from rest_framework import generics, mixins, viewsets
-
+from rest_framework import generics, mixins, viewsets, filters
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
 # Viewsets DRF
+# class StudentPagination(PageNumberPagination):
+#     page_size = 3
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    pagination_class = LimitOffsetPagination
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    # filterset_fields = ['name', 'score']
+    search_fields = ['^id','^name']
+    ordering_fields = ['name','score']
+    ordering = ['id']
 
 
 """
